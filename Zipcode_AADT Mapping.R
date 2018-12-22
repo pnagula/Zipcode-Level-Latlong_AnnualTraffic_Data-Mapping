@@ -7,7 +7,7 @@ library(rjson)
 ## CREATE PROJECTION STRING for reading shape files
 proj4string="+proj=utm +zone=18 +north +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
 ## Read shape file
-shps=readOGR('/users/pivotalit/downloads/AADT_2015_tdv/AADT_2015_tdv.shp')
+shps=readOGR('/$PATH/AADT_2015_tdv/AADT_2015_tdv.shp')
 
 ## extract latitude,longitude from shape file and insert rows into lat,long data frame
 latlon=data.frame(lat=0.0,lon=0.0)
@@ -28,7 +28,7 @@ final=sqldf('select lat,lon,sum(aadt) as aadt from fds group by lat,lon')
 final=final[2:nrow(final),]
 
 # Read Zip_Codes and Lat,long mapping JSON file
-result <- fromJSON(file = "/users/pivotalit/downloads/zip_codes_sorted.json")
+result <- fromJSON(file = "/$PATH/zip_codes_sorted.json")
 ziplatlong=as.data.frame(result[1])
 for(i in 2:length(result)){
   ziplatlong=InsertRow(ziplatlong,as.data.frame(result[i]),nrow(ziplatlong))
