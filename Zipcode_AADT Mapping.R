@@ -43,6 +43,6 @@ final$zipcode=mdl
 library(sqldf)
 sbase=sqldf('select zipcode,sum(aadt) from final group by zipcode')
 
-write.csv(sbase,'/users/pivotalit/downloads/zipcode_traffic.csv',row.names=F)
+write.csv(sbase,'/$PATH/zipcode_traffic.csv',row.names=F)
 
 
