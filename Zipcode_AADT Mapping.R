@@ -4,7 +4,7 @@ library(proj4)
 library(DataCombine)
 library(rjson)
 
-## CREATE PROJECTION STRING for reading shape files
+## CREATE PROJECTION STRING for reading shape files, make sure to update proj,zone and direction in the projection string as per your shapefile
 proj4string="+proj=utm +zone=18 +north +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
 ## Read shape file
 shps=readOGR('/$PATH/AADT_2015_tdv/AADT_2015_tdv.shp')
